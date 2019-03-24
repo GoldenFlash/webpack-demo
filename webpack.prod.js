@@ -10,13 +10,17 @@ module.exports = merge(common, {
     devtool:"source-map",
     optimization: {
         minimizer: [
-            new UglifyJSPlugin({
-                cache: true,
-                parallel: true,
-                sourceMap: true // set to true if you want JS source maps
-            }),
             new OptimizeCSSAssetsPlugin({})
-        ]
+        ],
+        // splitChunks: {
+        //     cacheGroups: {
+        //         commons: {
+        //             name: "commons",
+        //             chunks: "initial",
+        //             minChunks: 2
+        //         }
+        //     }
+        // } 
     },
     plugins: [
         new UglifyJSPlugin({
@@ -35,6 +39,12 @@ module.exports = merge(common, {
     ],
     module: {
         rules: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                // exclude: /node_modules/,
+
+            },
             {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
