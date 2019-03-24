@@ -2,6 +2,7 @@
 // import ReactDom from "react-dom"
 import _ from 'lodash';
 import "./index.css"
+import "./styles/markdown.scss"
 import printMe from './print.js';
 import { cube} from "./math.js"
 // import Icon from "./assets/1.jpeg"
